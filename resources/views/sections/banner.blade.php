@@ -1,0 +1,48 @@
+<!-- cart banner section -->
+<section class="cart-banner pt-100 pb-100">
+    <div class="container">
+        @foreach ($banners as $banner)
+        <div class="row clearfix">
+            <!--Image Column-->
+            <div class="image-column col-lg-6">
+                <div class="image">
+                    <div class="price-box">
+                        <div class="inner-price">
+                            <span class="price">
+                                <strong>{{ $banner->percentage }}</strong> <br> off per kg
+                            </span>
+                        </div>
+                    </div>
+                    <img src="/images/banner/{{ $banner->image }}" alt="">
+                </div>
+            </div>
+            <!--Content Column-->
+            <div class="content-column col-lg-6">
+                <h3><span class="orange-text">Deal</span> of the month</h3>
+                <h4>{{ $banner->title }}</h4>
+                <div class="text">{{ $banner->text }}</div>
+                <!--Countdown Timer-->
+                <div class="time-counter">
+                    <div class="time-countdown clearfix" data-countdown="{{ $banner->time }}">
+                        <div class="counter-column">
+                            <div class="inner"><span id="days">00</span>Days</div>
+                        </div>
+                        <div class="counter-column">
+                            <div class="inner"><span id="hours">00</span>Hours</div>
+                        </div>
+                        <div class="counter-column">
+                            <div class="inner"><span id="mins">00</span>Mins</div>
+                        </div>
+                        <div class="counter-column">
+                            <div class="inner"><span id="secs">00</span>Secs</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ route('cart') }}" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+            </div>
+        </div>
+        @endforeach
+
+    </div>
+</section>
+<!-- end cart banner section -->

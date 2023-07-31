@@ -1,0 +1,81 @@
+@extends('layouts.admin')
+@section('title')
+    Question
+@endsection
+@section('content')
+    @if (session('seccess'))
+        <div class="alert alert-primary alert-dismissible show fade">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+                    <span>×</span>
+                </button>
+                {{ session('seccess') }}
+            </div>
+        </div>
+    @endif
+
+
+    <div class="col-md-12">
+        <div class="white_shd full margin_bottom_30">
+            <div class="full graph_head">
+                <div class="heading1 margin_0 ">
+                    <h2>Question Table</h2>
+                    {{-- <div class="card-header-form mt-3 ">
+                        <a href="{{ route('admin.features.create') }}" class="btn btn-primary">Create</a>
+                    </div> --}}
+                </div>
+
+
+            </div>
+            <div class="table_section padding_infor_info">
+                <div class="table-responsive-sm">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>T/R</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Subject</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($contact2s as $contact2)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $contact2->name }}</td>
+                                    <td>{{ $contact2->email }}</td>
+                                    <td>{{ $contact2->phone }}</td>
+                                    <td>{{ $contact2->subject }}</td>
+                                    <td>{{ $contact2->text }}</td>
+                                    {{-- <td class="d-flex ">
+                                        <a href="#!"
+                                            class="btn btn-warning ">Show</a>
+                                        <a href="{{ route('admin.features.edit', $feature->id) }}"
+                                            class="btn btn-info">Update</a>
+                                        <form action="{{ route('admin.features.destroy', $feature->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn btn-danger "
+                                                onclick="return confirm('o\'chirishni hohlaysizmi?')">Delete</button>
+                                        </form>
+                                    </td> --}}
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card-footer text-right">
+                <nav class="d-inline-block">
+                    {{ $contact2s->links() }}
+                </nav>
+            </div>
+        </div>
+    </div>
+@endsection
